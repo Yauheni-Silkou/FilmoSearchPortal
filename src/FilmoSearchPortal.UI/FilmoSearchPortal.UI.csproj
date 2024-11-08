@@ -19,4 +19,10 @@
     <ProjectReference Include="..\FilmoSearchPortal.BLL\FilmoSearchPortal.BLL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="**\*.cs">
+      <DependentUpon>$([System.String]::Copy(I%(Filename).cs))</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

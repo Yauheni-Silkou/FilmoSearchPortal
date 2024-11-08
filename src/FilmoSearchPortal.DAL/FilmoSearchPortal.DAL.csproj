@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Update="**\*.cs">
+      <DependentUpon>$([System.String]::Copy(I%(Filename).cs))</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>
