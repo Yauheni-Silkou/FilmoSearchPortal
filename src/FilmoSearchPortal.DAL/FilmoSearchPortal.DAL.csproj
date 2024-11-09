@@ -28,4 +28,10 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="**\ApplicationDbContext.*.cs">
+      <DependentUpon>ApplicationDbContext.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

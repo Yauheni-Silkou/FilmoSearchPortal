@@ -1,29 +1,44 @@
 ﻿namespace FilmoSearchPortal.DAL.Repositories;
 
-public class ActorRepository : IActorRepository
+public class ActorRepository(ApplicationDbContext context) : IActorRepository
 {
-    public Task<IEnumerable<Actor>> GetAllAsync()
+    private readonly ApplicationDbContext _context = context;
+
+    public async Task<IEnumerable<Actor>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        var actors = await _context.Actors.ToListAsync();
+        return actors;
     }
 
-    public Task<Actor> GetByIdAsync(int id)
+    public async Task<Actor> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        var actor = await _context.Actors.FindAsync(id);
+        return actor!;
     }
 
-    public Task AddAsync(Actor actor)
+    public async Task AddAsync(Actor actor)
     {
-        throw new NotImplementedException();
+        await _context.Actors.AddAsync(actor);
+        await _context.SaveChangesAsync();
     }
 
-    public Task UpdateAsync(Actor actor)
+    public async Task UpdateAsync(Actor actor)
     {
-        throw new NotImplementedException();
+        var existingActor = await _context.Actors.FindAsync(actor.Id);
+        if (existingActor is not null)
+        {
+            _context.Entry(existingActor).CurrentValues.SetValues(actor);
+            await _context.SaveChangesAsync();
+        }
     }
 
-    public Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        var actor = await _context.Actors.FindAsync(id);
+        if (actor is not null)
+        {
+            _context.Actors.Remove(actor);
+            await _context.SaveChangesAsync();
+        }
     }
 }

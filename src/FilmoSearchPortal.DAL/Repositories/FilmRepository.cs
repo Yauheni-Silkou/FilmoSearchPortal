@@ -1,29 +1,44 @@
 ﻿namespace FilmoSearchPortal.DAL.Repositories;
 
-public class FilmRepository : IFilmRepository
+public class FilmRepository(ApplicationDbContext context) : IFilmRepository
 {
-    public Task<IEnumerable<Film>> GetAllAsync()
+    private readonly ApplicationDbContext _context = context;
+
+    public async Task<IEnumerable<Film>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        var films = await _context.Films.ToListAsync();
+        return films;
     }
 
-    public Task<Film> GetByIdAsync(int id)
+    public async Task<Film> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        var film = await _context.Films.FindAsync(id);
+        return film!;
     }
 
-    public Task AddAsync(Film film)
+    public async Task AddAsync(Film film)
     {
-        throw new NotImplementedException();
+        await _context.Films.AddAsync(film);
+        await _context.SaveChangesAsync();
     }
 
-    public Task UpdateAsync(Film film)
+    public async Task UpdateAsync(Film film)
     {
-        throw new NotImplementedException();
+        var existingFilm = await _context.Films.FindAsync(film.Id);
+        if (existingFilm is not null)
+        {
+            _context.Entry(existingFilm).CurrentValues.SetValues(film);
+            await _context.SaveChangesAsync();
+        }
     }
 
-    public Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        var film = await _context.Films.FindAsync(id);
+        if (film is not null)
+        {
+            _context.Films.Remove(film);
+            await _context.SaveChangesAsync();
+        }
     }
 }

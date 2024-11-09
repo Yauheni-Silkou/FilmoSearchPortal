@@ -7,4 +7,6 @@ public class Actor : IActor
     public string FirstName { get; set; } = string.Empty;
 
     public string LastName { get; set; } = string.Empty;
+
+    public ICollection<Film> Films { get; set; } = [];
 }

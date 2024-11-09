@@ -1,29 +1,44 @@
 ﻿namespace FilmoSearchPortal.DAL.Repositories;
 
-public class ReviewRepository : IReviewRepository
+public class ReviewRepository(ApplicationDbContext context) : IReviewRepository
 {
-    public Task<IEnumerable<Review>> GetAllAsync()
+    private readonly ApplicationDbContext _context = context;
+
+    public async Task<IEnumerable<Review>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        var reviews = await _context.Reviews.ToListAsync();
+        return reviews;
     }
 
-    public Task<Review> GetByIdAsync(int id)
+    public async Task<Review> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        var review = await _context.Reviews.FindAsync(id);
+        return review!;
     }
 
-    public Task AddAsync(Review review)
+    public async Task AddAsync(Review review)
     {
-        throw new NotImplementedException();
+        await _context.Reviews.AddAsync(review);
+        await _context.SaveChangesAsync();
     }
 
-    public Task UpdateAsync(Review review)
+    public async Task UpdateAsync(Review review)
     {
-        throw new NotImplementedException();
+        var existingReview = await _context.Reviews.FindAsync(review.Id);
+        if (existingReview is not null)
+        {
+            _context.Entry(existingReview).CurrentValues.SetValues(review);
+            await _context.SaveChangesAsync();
+        }
     }
 
-    public Task DeleteAsync(int id)
+    public async Task DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        var film = await _context.Reviews.FindAsync(id);
+        if (film is not null)
+        {
+            _context.Reviews.Remove(film);
+            await _context.SaveChangesAsync();
+        }
     }
 }
