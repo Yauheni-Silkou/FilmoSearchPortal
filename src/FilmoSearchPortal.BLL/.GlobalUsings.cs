@@ -9,3 +9,4 @@ global using AutoMapper;
 global using FilmoSearchPortal.BLL.Dtos;
 global using FilmoSearchPortal.DAL;
 global using FilmoSearchPortal.DAL.Entities;
+global using FilmoSearchPortal.DAL.Repositories;
