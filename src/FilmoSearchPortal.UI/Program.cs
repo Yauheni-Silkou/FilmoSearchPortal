@@ -3,7 +3,7 @@ using Serilog;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddBusinessLayerConfiguration();
+builder.Services.AddPresentationLayerConfiguration();
 builder.Services.AddControllersWithViews();
 
 // Configure Serilog

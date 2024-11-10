@@ -9,3 +9,4 @@ global using Microsoft.AspNetCore.Mvc;
 global using FilmoSearchPortal.BLL;
 global using FilmoSearchPortal.BLL.Dtos;
 global using FilmoSearchPortal.BLL.Services;
+global using FilmoSearchPortal.UI;
