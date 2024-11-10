@@ -14,6 +14,11 @@ Log.Logger = new LoggerConfiguration()
 
 builder.Host.UseSerilog();
 
+builder.Services.AddEndpointsApiExplorer();
+
+// Configure Swagger
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddControllers();
 
 var app = builder.Build();
@@ -21,7 +26,10 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseMigrationsEndPoint();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 else
 {
