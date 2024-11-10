@@ -2,9 +2,10 @@
 
 [Route("api/[controller]")]
 [ApiController]
-public class ReviewController(IReviewService reviewService) : ControllerBase
+public class ReviewController(IReviewService reviewService, ILogger<ReviewController> logger) : ControllerBase
 {
     private readonly IReviewService _reviewService = reviewService;
+    private readonly ILogger<ReviewController> _logger = logger;
 
     [HttpGet]
     public async Task<IActionResult> GetAll()

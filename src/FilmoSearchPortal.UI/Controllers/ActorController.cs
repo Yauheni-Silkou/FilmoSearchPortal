@@ -2,9 +2,10 @@
 
 [Route("api/[controller]")]
 [ApiController]
-public class ActorController(IActorService actorService) : ControllerBase
+public class ActorController(IActorService actorService, ILogger<ActorController> logger) : ControllerBase
 {
     private readonly IActorService _actorService = actorService;
+    private readonly ILogger<ActorController> _logger = logger;
 
     [HttpGet]
     public async Task<IActionResult> GetAll()

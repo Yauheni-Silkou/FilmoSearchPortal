@@ -2,9 +2,10 @@
 
 [Route("api/[controller]")]
 [ApiController]
-public class FilmController(IFilmService filmService) : ControllerBase
+public class FilmController(IFilmService filmService, ILogger<FilmController> logger) : ControllerBase
 {
     private readonly IFilmService _filmService = filmService;
+    private readonly ILogger<FilmController> _logger = logger;
 
     [HttpGet]
     public async Task<IActionResult> GetAll()
