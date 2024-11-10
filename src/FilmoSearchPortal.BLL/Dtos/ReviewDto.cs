@@ -9,4 +9,6 @@ public class ReviewDto
     public string Description { get; set; } = string.Empty;
 
     public int Stars { get; set; }
+
+    public FilmDto Film { get; set; } = null!;
 }
