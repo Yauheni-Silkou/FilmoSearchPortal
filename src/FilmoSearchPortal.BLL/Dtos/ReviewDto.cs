@@ -1,6 +1,6 @@
 ﻿namespace FilmoSearchPortal.BLL.Dtos;
 
-public class ReviewDto : IReviewDto
+public class ReviewDto
 {
     public int Id { get; set; }
 

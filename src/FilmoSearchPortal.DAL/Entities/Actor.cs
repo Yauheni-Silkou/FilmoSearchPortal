@@ -1,6 +1,6 @@
 ﻿namespace FilmoSearchPortal.DAL.Entities;
 
-public class Actor : IActor
+public class Actor
 {
     public int Id { get; set; }
 

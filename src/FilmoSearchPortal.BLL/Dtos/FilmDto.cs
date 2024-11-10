@@ -1,6 +1,6 @@
 ﻿namespace FilmoSearchPortal.BLL.Dtos;
 
-public class FilmDto : IFilmDto
+public class FilmDto
 {
     public int Id { get; set; }
 

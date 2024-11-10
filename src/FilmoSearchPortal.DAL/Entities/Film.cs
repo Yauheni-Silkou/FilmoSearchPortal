@@ -1,6 +1,6 @@
 ﻿namespace FilmoSearchPortal.DAL.Entities;
 
-public class Film : IFilm
+public class Film
 {
     public int Id { get; set; }
 

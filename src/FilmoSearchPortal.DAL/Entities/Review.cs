@@ -1,6 +1,6 @@
 ﻿namespace FilmoSearchPortal.DAL.Entities;
 
-public class Review : IReview
+public class Review
 {
     public int Id { get; set; }
 
