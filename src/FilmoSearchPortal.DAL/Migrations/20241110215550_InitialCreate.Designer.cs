@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FilmoSearchPortal.DAL.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241109193812_InitialCreate")]
+    [Migration("20241110215550_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
