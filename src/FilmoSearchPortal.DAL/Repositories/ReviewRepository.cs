@@ -28,7 +28,12 @@ public class ReviewRepository(ApplicationDbContext context) : IReviewRepository
             .AsNoTracking()
             .FirstOrDefaultAsync(f => f.Id == review.Film.Id);
 
-        if (existingFilm is not null)
+        var trackedFilm = _context.Films.Local.FirstOrDefault(f => f.Id == review.FilmId);
+        if (trackedFilm is not null)
+        {
+            review.Film = trackedFilm;
+        }
+        else if (existingFilm is not null)
         {
             _context.Attach(existingFilm);
             review.Film = existingFilm;

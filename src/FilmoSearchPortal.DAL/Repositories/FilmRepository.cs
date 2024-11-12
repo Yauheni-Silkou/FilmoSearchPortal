@@ -28,18 +28,27 @@ public class FilmRepository(ApplicationDbContext context) : IFilmRepository
 
         foreach (var actor in film.Actors)
         {
-            var existingActor = await _context.Actors
-                .AsNoTracking()
-                .FirstOrDefaultAsync(a => a.Id == actor.Id);
+            var trackedActor = _context.Actors.Local.FirstOrDefault(a => a.Id == actor.Id);
 
-            if (existingActor is not null)
+            if (trackedActor is not null)
             {
-                _context.Attach(existingActor);
-                newActors.Add(existingActor);
+                newActors.Add(trackedActor);
             }
             else
             {
-                newActors.Add(actor);
+                var existingActor = await _context.Actors
+                .AsNoTracking()
+                .FirstOrDefaultAsync(a => a.Id == actor.Id);
+
+                if (existingActor is not null)
+                {
+                    _context.Attach(existingActor);
+                    newActors.Add(existingActor);
+                }
+                else
+                {
+                    newActors.Add(actor);
+                }
             }
         }
 

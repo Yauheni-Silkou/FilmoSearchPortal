@@ -1,4 +1,6 @@
-﻿using Serilog;
+﻿#pragma warning disable IDE0060
+
+using Serilog;
 using System.Net;
 using System.Text.Json;
 
