@@ -1,4 +1,4 @@
-﻿namespace FilmoSearchPortal.UI;
+﻿namespace FilmoSearchPortal.WebAPI;
 
 public static class DependencyInjection
 {
