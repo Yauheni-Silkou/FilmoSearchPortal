@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilmoSearchPortal.BLL", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilmoSearchPortal.DAL", "src\FilmoSearchPortal.DAL\FilmoSearchPortal.DAL.csproj", "{5E04F0B2-4EBE-4A92-BAAE-F9EF40AB3884}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmoSearchPortal.WebAPI", "src\FilmoSearchPortal.WebAPI\FilmoSearchPortal.WebAPI.csproj", "{1B8D6E67-7EB6-40BB-AE01-16FD517DD2F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilmoSearchPortal.WebAPI", "src\FilmoSearchPortal.WebAPI\FilmoSearchPortal.WebAPI.csproj", "{1B8D6E67-7EB6-40BB-AE01-16FD517DD2F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
