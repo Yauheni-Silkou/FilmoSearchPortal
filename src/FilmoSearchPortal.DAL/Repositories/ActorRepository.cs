@@ -6,13 +6,17 @@ public class ActorRepository(ApplicationDbContext context) : IActorRepository
 
     public async Task<IEnumerable<Actor>> GetAllAsync()
     {
-        var actors = await _context.Actors.ToListAsync();
+        var actors = await _context.Actors
+            .ToListAsync();
+
         return actors;
     }
 
     public async Task<Actor> GetByIdAsync(int id)
     {
-        var actor = await _context.Actors.FindAsync(id);
+        var actor = await _context.Actors
+            .FirstOrDefaultAsync(a => a.Id == id);
+
         return actor!;
     }
 
@@ -24,7 +28,9 @@ public class ActorRepository(ApplicationDbContext context) : IActorRepository
 
     public async Task UpdateAsync(Actor actor)
     {
-        var existingActor = await _context.Actors.FindAsync(actor.Id);
+        var existingActor = await _context.Actors
+            .FirstOrDefaultAsync(a => a.Id == actor.Id);
+
         if (existingActor is not null)
         {
             _context.Entry(existingActor).CurrentValues.SetValues(actor);
@@ -34,7 +40,9 @@ public class ActorRepository(ApplicationDbContext context) : IActorRepository
 
     public async Task DeleteAsync(int id)
     {
-        var actor = await _context.Actors.FindAsync(id);
+        var actor = await _context.Actors
+            .FirstOrDefaultAsync(a => a.Id == id);
+
         if (actor is not null)
         {
             _context.Actors.Remove(actor);

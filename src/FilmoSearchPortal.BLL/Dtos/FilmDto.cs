@@ -6,7 +6,5 @@ public class FilmDto
 
     public string Title { get; set; } = string.Empty;
 
-    public ICollection<Actor> Actors { get; set; } = [];
-
-    public ICollection<Review> Reviews { get; set; } = [];
+    public IEnumerable<ActorDto> Actors { get; set; } = []; 
 }
