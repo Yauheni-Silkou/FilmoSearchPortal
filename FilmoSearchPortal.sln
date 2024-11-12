@@ -19,6 +19,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmoSearchPortal.BLL.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FilmoSearchPortal.WebAPI.Tests", "tests\FilmoSearchPortal.WebAPI.Tests\FilmoSearchPortal.WebAPI.Tests.csproj", "{08B62A85-CC6C-4A11-BB74-5727EAC35E5D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{BE5CE3CB-1B94-48CA-823D-E1667206FECA}"
+	ProjectSection(SolutionItems) = preProject
+		C:\Users\Yauheni\Downloads\FilmoSearch portal - Trainee Task.pdf = C:\Users\Yauheni\Downloads\FilmoSearch portal - Trainee Task.pdf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
